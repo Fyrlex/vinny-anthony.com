@@ -98,7 +98,7 @@
       </div>
       <img
         transition:fly={{ delay: 400, duration: 1000, y: 50 }}
-        class="rounded-lg shadow-md"
+        class="rounded-md shadow-md"
         src={VinnyScream}
         alt="Vinny Scream"
       />
