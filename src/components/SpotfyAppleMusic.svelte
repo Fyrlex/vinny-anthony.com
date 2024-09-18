@@ -4,12 +4,6 @@
 
   export let appleMusic: string;
   export let spotify: string;
-
-  let show = false;
-
-  setTimeout(() => {
-    show = true;
-  }, 1000);
 </script>
 
 <div transition:fade class="bg-orange-300 rounded-lg w-28 h-fit flex flex-row justify-between p-1">

@@ -2,7 +2,7 @@
   import Meta from '../components/meta.svelte';
   import VinnyScream from '$lib/assets/VINNY_SCREAM.jpg';
   import Icon from '@iconify/svelte';
-  import SpotfyAppleMusic from '../components/SpotfyAppleMusic.svelte';
+  // import SpotfyAppleMusic from '../components/SpotfyAppleMusic.svelte';
   import { fade, fly } from 'svelte/transition';
   import { onMount } from 'svelte';
 
@@ -38,8 +38,6 @@
     { title: 'IndieHeads UVA', date: '9/13/2024' },
   ];
 
-  let hoveringSong: string | null = null;
-
   let load = false;
 
   onMount(() => {
@@ -47,6 +45,11 @@
   });
 </script>
 
+<!-- on:mouseenter={() => (hoveringSong = song.title)}
+     on:mouseleave={() => (hoveringSong = null)} -->
+<!-- {#if hoveringSong === song.title}
+<SpotfyAppleMusic appleMusic={song.appleMusic} spotify={song.spotify} />
+{/if} -->
 <svelte:head>
   <Meta data={{ title: 'Self proclaimed local legend indie sleaze artist', url: '' }} />
 </svelte:head>
@@ -61,15 +64,8 @@
         {#each music as song}
           <div class="flex flex-row items-center space-x-3 my-5">
             <Icon icon="streamline:button-play-solid" class="w-max" color="fdeadc" />
-            <li
-              class="hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]"
-              on:mouseenter={() => (hoveringSong = song.title)}
-              on:mouseleave={() => (hoveringSong = null)}
-            >
+            <li class="hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]">
               {song.title}
-              <!-- {#if hoveringSong === song.title}
-                <SpotfyAppleMusic appleMusic={song.appleMusic} spotify={song.spotify} />
-              {/if} -->
             </li>
           </div>
         {/each}

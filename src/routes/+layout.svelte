@@ -2,7 +2,6 @@
   import '../app.css';
   import Transition from '../components/transition.svelte';
   import VinnyAnthonyLogo from '$lib/assets/vinnylogowide.png';
-  import { goto } from '$app/navigation';
 
   export let data;
 </script>
