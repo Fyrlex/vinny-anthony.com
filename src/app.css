@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #6b5748 !important;
+  font-family: 'Woobly';
+}
+
+@font-face {
+  font-family: 'Woobly';
+  src: url('/fonts/woobly.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
