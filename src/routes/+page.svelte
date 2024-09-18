@@ -111,6 +111,7 @@
       <ul class="text-2xl md:text-3xl text-left list-inside px-5">
         {#each shows as show}
           <div class="flex flex-row items-center space-x-3 my-5">
+            <Icon icon="gravity-ui:star-fill" class="w-max" color="fdeadc" />
             <li class="hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]">
               {show.title} - {show.date}
             </li>
