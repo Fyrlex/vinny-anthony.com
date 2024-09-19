@@ -2,7 +2,6 @@
   import Meta from '../components/meta.svelte';
   import VinnyScream from '$lib/assets/VINNY_SCREAM.jpg';
   import Icon from '@iconify/svelte';
-  // import SpotfyAppleMusic from '../components/SpotfyAppleMusic.svelte';
   import { fade, fly } from 'svelte/transition';
   import { onMount } from 'svelte';
   import Calendar from '../components/Calendar.svelte';
@@ -131,6 +130,13 @@
             class="text-5xl hover:bg-blue-500 hover:ring-blue-500 hover:ring-2 rounded-full duration-300"
           />
         </a>
+        <a href="https://www.linkedin.com/in/vincent-nurmi-335114296" target="_blank" rel="noreferrer noopener">
+          <Icon
+            icon="simple-icons:linkedin"
+            color="#fdeadc"
+            class="text-5xl hover:bg-blue-500 hover:ring-blue-500 hover:ring-2 rounded-xl duration-300"
+          />
+        </a>
         <a href="https://open.spotify.com/artist/17cubPb5WpkdYtXNPj9BgN" target="_blank" rel="noreferrer noopener">
           <Icon
             icon="simple-icons:spotify"
@@ -157,35 +163,34 @@
       transition:fly={{ delay: 900, duration: 1000, y: 50 }}
       class="order-3 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5 h-fit"
     >
-      <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800">Contact</h2>
-      <ul class="text-2xl text-left list-inside px-5">
-        <li>
-          <div class="flex flex-row items-center space-x-3 my-5">
+      <div class="mb-5">
+        <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800">Contact</h2>
+        <div class="text-2xl text-left list-inside px-5">
+          <div class="flex flex-row items-center space-x-3">
             <Icon icon="iconoir:phone-solid" class="w-max" color="fdeadc" />
-            <li class="md:text-3xl hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]">
+            <p class="md:text-3xl hover:cursor-pointer hover:text-cyan-200 duration-300 w-[60vw] md:w-[20vw]">
               703-622-9190
-            </li>
+            </p>
           </div>
-        </li>
-        <li>
-          <div class="flex flex-row items-center space-x-3 my-5">
+          <div class="flex flex-row items-center space-x-3">
             <Icon icon="mdi:email" class="w-max" color="fdeadc" />
             <a
               href="mailto:vnurmi5027@gmail.com"
-              class="text-sm md:text-2xl hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]"
+              class="text-sm md:text-2xl hover:cursor-pointer hover:text-cyan-200 duration-300 w-[60vw] md:w-[20vw] break-words"
             >
               VNURMI5027@GMAIL.COM
             </a>
           </div>
-        </li>
-      </ul>
-      <h2 class="text-4xl md:text-5xl my-5 text-emerald-800">Calendar</h2>
-      <Calendar currentDate={new Date()} {shows} />
+        </div>
+      </div>
+      <div class="mb-5">
+        <h2 class="text-4xl md:text-5xl my-5 text-emerald-800" transition:fly={{ delay: 900, duration: 1000, y: 50 }}>
+          Calendar
+        </h2>
+        <div transition:fly={{ delay: 900, duration: 1200, y: 50 }}>
+          <Calendar currentDate={new Date()} {shows} />
+        </div>
+      </div>
     </div>
   </div>
 {/if}
-
-<footer class="text-center text-gray-800 py-10 text-lg">
-  <p>© 2024 Vinny Anthony</p>
-  <p>Made by Jaren G.</p>
-</footer>
