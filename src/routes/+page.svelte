@@ -64,31 +64,48 @@
   <Meta data={{ title: 'Self proclaimed local legend indie sleaze artist', url: '' }} />
 </svelte:head>
 {#if load}
-  <div class="flex flex-col md:flex-row mx-10 md:space-x-5 space-y-5 md:space-y-0">
+  <div class="flex flex-col md:flex-row mx-5 md:mx-10 md:space-x-5 space-y-5 md:space-y-0">
     <div
       transition:fly={{ delay: 600, duration: 1000, y: 50 }}
       class="order-2 md:order-1 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5 h-fit"
     >
-      <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800">Music</h2>
-      <ul class="text-2xl md:text-3xl text-left list-inside px-5">
-        {#each music as song}
-          <div class="flex flex-row items-center space-x-3 my-5">
-            <Icon icon="streamline:button-play-solid" class="w-max" color="fdeadc" />
-            <li
-              class="hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]"
-              on:mouseenter={() => (hoveringSong = song.title)}
-              on:mouseleave={() => (hoveringSong = null)}
-            >
-              {song.title}
-              {#if hoveringSong === song.title}
-                <div class="my-2" out:fly={{ y: 20, duration: 300 }} in:fly={{ y: 20, duration: 100 }}>
-                  <SpotifyAppleMusic appleMusic={song.appleMusic} spotify={song.spotify} />
-                </div>
-              {/if}
-            </li>
-          </div>
-        {/each}
-      </ul>
+      <div>
+        <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800">Music</h2>
+        <ul class="text-2xl md:text-3xl text-left list-inside px-5">
+          {#each music as song}
+            <div class="flex flex-row items-center space-x-3 my-5">
+              <Icon icon="streamline:button-play-solid" class="w-max" color="fdeadc" />
+              <li
+                class="hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]"
+                on:mouseenter={() => (hoveringSong = song.title)}
+                on:mouseleave={() => (hoveringSong = null)}
+              >
+                {song.title}
+                {#if hoveringSong === song.title}
+                  <div class="my-2" out:fly={{ y: 20, duration: 300 }} in:fly={{ y: 20, duration: 100 }}>
+                    <SpotifyAppleMusic appleMusic={song.appleMusic} spotify={song.spotify} />
+                  </div>
+                {/if}
+              </li>
+            </div>
+          {/each}
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800">Media</h2>
+        <div class="flex flex-col items-center">
+          <iframe
+            class="rounded-md shadow-md ring-2 ring-orange-300 w-[250px] md:w-[430px] h-[200px] md:h-[305px]"
+            width="430"
+            height="305"
+            src="https://www.youtube.com/embed/Zox0pTjJeow"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
     </div>
     <div
       class="order-1 md:order-2 md:w-1/2 mx-auto container text-center items-center justify-center flex flex-col pb-5 md:pb-0"
