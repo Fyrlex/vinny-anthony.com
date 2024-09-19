@@ -6,31 +6,31 @@
   import { fade, fly } from 'svelte/transition';
   import { onMount } from 'svelte';
   import Calendar from '../components/Calendar.svelte';
-  import SpotfyAppleMusic from '../components/SpotfyAppleMusic.svelte';
+  import SpotifyAppleMusic from '../components/SpotifyAppleMusic.svelte';
 
   const music: { title: string; appleMusic: string; spotify: string }[] = [
     {
-      title: 'STAY AND HOLD ME',
+      title: '"STAY AND HOLD ME"',
       appleMusic: 'https://music.apple.com/us/album/stay-and-hold-me/1710058591?i=1710058593',
       spotify: 'https://open.spotify.com/track/4BBU6YajIIfxk13wo0zL8I?si=753f2708bd9b47c8',
     },
     {
-      title: 'GENTLY',
+      title: '"GENTLY"',
       appleMusic: 'https://music.apple.com/us/album/gently/1617037640?i=1617037641',
       spotify: 'https://open.spotify.com/track/4aq4KfNljtZOHPsYljQVcC?si=742e813091154e41',
     },
     {
-      title: 'JET',
+      title: '"JET"',
       appleMusic: 'https://music.apple.com/us/album/jet/1726834623?i=1726834624',
       spotify: 'https://open.spotify.com/track/2nyGkzuFoWQ5aMRiSmAelk?si=88b77560636c48e9',
     },
     {
-      title: 'BETTER THINGS',
+      title: '"BETTER THINGS"',
       appleMusic: 'https://music.apple.com/us/album/better-things/1726834333?i=1726834334',
       spotify: 'https://open.spotify.com/track/3tFCDt1molYpGxlZCsrFyw?si=478e9baede0d45aa',
     },
     {
-      title: 'MY SIDE',
+      title: '"MY SIDE"',
       appleMusic: 'https://music.apple.com/us/album/my-side/1655581593?i=1655581594',
       spotify: 'https://open.spotify.com/track/2mOMILCvfjTMEHNo79OPVT?si=359b118f0e954ee9',
     },
@@ -43,9 +43,20 @@
 
   let load = false;
   let hoveringSong: string | null = null;
+  let mouseX = 0;
+  let mouseY = 0;
+
+  const handleMouseMove = (event: { clientX: any; clientY: any }) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+  };
 
   onMount(() => {
     load = true;
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   });
 </script>
 
@@ -56,7 +67,7 @@
   <div class="flex flex-col md:flex-row mx-10 md:space-x-5 space-y-5 md:space-y-0">
     <div
       transition:fly={{ delay: 600, duration: 1000, y: 50 }}
-      class="order-2 md:order-1 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5"
+      class="order-2 md:order-1 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5 h-fit"
     >
       <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800">Music</h2>
       <ul class="text-2xl md:text-3xl text-left list-inside px-5">
@@ -70,7 +81,9 @@
             >
               {song.title}
               {#if hoveringSong === song.title}
-                <SpotfyAppleMusic appleMusic={song.appleMusic} spotify={song.spotify} />
+                <div class="my-2" out:fly={{ y: 20, duration: 300 }} in:fly={{ y: 20, duration: 100 }}>
+                  <SpotifyAppleMusic appleMusic={song.appleMusic} spotify={song.spotify} />
+                </div>
               {/if}
             </li>
           </div>
@@ -94,7 +107,7 @@
             class="text-5xl hover:bg-fuchsia-500 hover:ring-fuchsia-500 hover:ring-2 rounded-xl duration-300"
           />
         </a>
-        <a href="https://music.apple.com/us/artist/vinny-anthony/1587279266" target="_blank" rel="noreferrer noopener">
+        <a href="https://www.facebook.com/profile.php?id=100010349163196" target="_blank" rel="noreferrer noopener">
           <Icon
             icon="simple-icons:facebook"
             color="#fdeadc"
@@ -125,7 +138,7 @@
     </div>
     <div
       transition:fly={{ delay: 900, duration: 1000, y: 50 }}
-      class="order-3 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5"
+      class="order-3 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5 h-fit"
     >
       <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800">Contact</h2>
       <ul class="text-2xl text-left list-inside px-5">
