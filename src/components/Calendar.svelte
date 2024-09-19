@@ -54,7 +54,7 @@
   {/each}
 </div>
 
-<div class="grid grid-cols-7 gap-2 md:gap-5 px-2 md:px-5">
+<div class="grid grid-cols-7 gap-2 md:gap-4 px-2 md:px-5">
   {#each weeks as week}
     {#each week as day}
       <div
