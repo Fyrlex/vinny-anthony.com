@@ -5,6 +5,8 @@
   // import SpotfyAppleMusic from '../components/SpotfyAppleMusic.svelte';
   import { fade, fly } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import Calendar from '../components/Calendar.svelte';
+  import SpotfyAppleMusic from '../components/SpotfyAppleMusic.svelte';
 
   const music: { title: string; appleMusic: string; spotify: string }[] = [
     {
@@ -33,23 +35,20 @@
       spotify: 'https://open.spotify.com/track/2mOMILCvfjTMEHNo79OPVT?si=359b118f0e954ee9',
     },
   ];
-  const shows: { title: string; date: string }[] = [
-    { title: 'The Camel', date: '3/16/2024' },
-    { title: 'IndieHeads UVA', date: '9/13/2024' },
+
+  const shows: { title: string; date: Date }[] = [
+    { title: 'The Camel', date: new Date('03/16/2024') },
+    { title: 'IndieHeads UVA', date: new Date('09/13/2024') },
   ];
 
   let load = false;
+  let hoveringSong: string | null = null;
 
   onMount(() => {
     load = true;
   });
 </script>
 
-<!-- on:mouseenter={() => (hoveringSong = song.title)}
-     on:mouseleave={() => (hoveringSong = null)} -->
-<!-- {#if hoveringSong === song.title}
-<SpotfyAppleMusic appleMusic={song.appleMusic} spotify={song.spotify} />
-{/if} -->
 <svelte:head>
   <Meta data={{ title: 'Self proclaimed local legend indie sleaze artist', url: '' }} />
 </svelte:head>
@@ -59,13 +58,20 @@
       transition:fly={{ delay: 600, duration: 1000, y: 50 }}
       class="order-2 md:order-1 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5"
     >
-      <h2 class="text-5xl mb-5 text-emerald-700">Music</h2>
+      <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800">Music</h2>
       <ul class="text-2xl md:text-3xl text-left list-inside px-5">
         {#each music as song}
           <div class="flex flex-row items-center space-x-3 my-5">
             <Icon icon="streamline:button-play-solid" class="w-max" color="fdeadc" />
-            <li class="hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]">
+            <li
+              class="hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]"
+              on:mouseenter={() => (hoveringSong = song.title)}
+              on:mouseleave={() => (hoveringSong = null)}
+            >
               {song.title}
+              {#if hoveringSong === song.title}
+                <SpotfyAppleMusic appleMusic={song.appleMusic} spotify={song.spotify} />
+              {/if}
             </li>
           </div>
         {/each}
@@ -79,8 +85,22 @@
       </h1>
       <div
         transition:fade={{ delay: 600, duration: 1000 }}
-        class="mx-auto items-center justify-center flex flex-row space-x-10 my-5"
+        class="mx-auto items-center justify-center flex flex-row space-x-5 md:space-x-10 my-5"
       >
+        <a href="https://www.instagram.com/vincent.nurmi" target="_blank" rel="noreferrer noopener">
+          <Icon
+            icon="simple-icons:instagram"
+            color="#fdeadc"
+            class="text-5xl hover:bg-fuchsia-500 hover:ring-fuchsia-500 hover:ring-2 rounded-xl duration-300"
+          />
+        </a>
+        <a href="https://music.apple.com/us/artist/vinny-anthony/1587279266" target="_blank" rel="noreferrer noopener">
+          <Icon
+            icon="simple-icons:facebook"
+            color="#fdeadc"
+            class="text-5xl hover:bg-blue-500 hover:ring-blue-500 hover:ring-2 rounded-full duration-300"
+          />
+        </a>
         <a href="https://open.spotify.com/artist/17cubPb5WpkdYtXNPj9BgN" target="_blank" rel="noreferrer noopener">
           <Icon
             icon="simple-icons:spotify"
@@ -107,17 +127,30 @@
       transition:fly={{ delay: 900, duration: 1000, y: 50 }}
       class="order-3 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5"
     >
-      <h2 class="text-5xl mb-5 text-emerald-700">Shows</h2>
-      <ul class="text-2xl md:text-3xl text-left list-inside px-5">
-        {#each shows as show}
+      <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800">Contact</h2>
+      <ul class="text-2xl text-left list-inside px-5">
+        <li>
           <div class="flex flex-row items-center space-x-3 my-5">
-            <Icon icon="gravity-ui:star-fill" class="w-max" color="fdeadc" />
-            <li class="hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]">
-              {show.title} - {show.date}
+            <Icon icon="iconoir:phone-solid" class="w-max" color="fdeadc" />
+            <li class="md:text-3xl hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]">
+              703-622-9190
             </li>
           </div>
-        {/each}
+        </li>
+        <li>
+          <div class="flex flex-row items-center space-x-3 my-5">
+            <Icon icon="mdi:email" class="w-max" color="fdeadc" />
+            <a
+              href="mailto:vnurmi5027@gmail.com"
+              class="text-sm md:text-2xl hover:cursor-pointer hover:text-cyan-200 duration-300 w-[50vw] md:w-[20vw]"
+            >
+              VNURMI5027@GMAIL.COM
+            </a>
+          </div>
+        </li>
       </ul>
+      <h2 class="text-4xl md:text-5xl my-5 text-emerald-800">Calendar</h2>
+      <Calendar currentDate={new Date()} {shows} />
     </div>
   </div>
 {/if}
