@@ -71,7 +71,7 @@
     >
       <h1
         transition:fly={{ delay: 300, duration: 1000, y: 50 }}
-        class="text-xl md:text-5xl text-orange-300 hover:cursor-pointer duration-300 hover:text-orange-400"
+        class="text-3xl md:text-5xl text-orange-300 hover:cursor-pointer duration-300 hover:text-orange-400"
       >
         SELF PROCLAIMED LOCAL LEGEND INDIE SLEAZE ARTIST
       </h1>

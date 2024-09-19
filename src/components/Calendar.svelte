@@ -34,7 +34,7 @@
 </script>
 
 <div>
-  <h2 class="text-4xl md:text-5xl my-5 text-emerald-800 hover:text-cyan-200 hover:cursor-pointer duration-300">
+  <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800 hover:text-cyan-200 hover:cursor-pointer duration-300">
     Calendar
   </h2>
 
@@ -55,15 +55,14 @@
   </div>
 
   <div
-    class="select-none grid grid-cols-7 gap-2 md:gap-5 px-2 md:px-5 py-2 text-center font-bold"
+    class="select-none grid grid-cols-7 gap-2 md:gap-5 px-4 md:px-5 py-2 text-center font-bold"
     in:fly={{ delay: 1400, duration: 1000, y: 50 }}
   >
     {#each ['S', 'M', 'T', 'W', 'T', 'F', 'S'] as day}
       <div>{day}</div>
     {/each}
   </div>
-
-  <div class="grid grid-cols-7 gap-2 md:gap-4 px-2 md:px-5" in:fly={{ delay: 1600, duration: 1000, y: 50 }}>
+  <div class="grid grid-cols-7 gap-2 md:gap-4 px-4 md:px-5 py-1" in:fly={{ delay: 1600, duration: 1000, y: 50 }}>
     {#each weeks as week}
       {#each week as day}
         <div

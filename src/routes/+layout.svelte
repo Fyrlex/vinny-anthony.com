@@ -9,13 +9,9 @@
 </script>
 
 <nav>
-  <div class="mx-auto select-none hover:cursor-pointer w-3/4 md:w-fit">
+  <div class="mx-auto select-none hover:cursor-pointer w-4/5 md:w-fit">
     <button on:click={() => goto('/')}>
-      <img
-        class="mx-auto select-none hover:cursor-pointer w-3/4 md:w-fit"
-        src={VinnyAnthonyLogo}
-        alt="Vinny Anthony Logo"
-      />
+      <img src={VinnyAnthonyLogo} alt="Vinny Anthony Logo" />
     </button>
   </div>
 </nav>
