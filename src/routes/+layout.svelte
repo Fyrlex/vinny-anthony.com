@@ -1,17 +1,23 @@
 <script lang="ts">
   import '../app.css';
   import Transition from '../components/transition.svelte';
-  import VinnyAnthonyLogo from '$lib/assets/vinnylogowide.png';
+  import VinnyAnthonyLogo from '$lib/assets/VinnyAnthonyLogoWide.png';
+  import { goto } from '$app/navigation';
+  import Icon from '@iconify/svelte';
 
   export let data;
 </script>
 
 <nav>
-  <img
-    class="mx-auto select-none hover:cursor-pointer w-3/4 md:w-fit"
-    src={VinnyAnthonyLogo}
-    alt="Vinny Anthony Logo"
-  />
+  <div class="mx-auto select-none hover:cursor-pointer w-3/4 md:w-fit">
+    <button on:click={() => goto('/')}>
+      <img
+        class="mx-auto select-none hover:cursor-pointer w-3/4 md:w-fit"
+        src={VinnyAnthonyLogo}
+        alt="Vinny Anthony Logo"
+      />
+    </button>
+  </div>
 </nav>
 
 <Transition {data}>
@@ -21,6 +27,16 @@
 </Transition>
 
 <footer class="text-center text-sm md:text-lg text-gray-800 py-10">
-  <p>© 2024 Vinny Anthony</p>
-  <p>Made by Jaren G.</p>
+  <div class="flex flex-row space-x-2 items-center justify-center">
+    <Icon icon="fa-regular:copyright" />
+    <p>2024 Vinny Anthony</p>
+  </div>
+  <p class="text-sm">
+    Made by <a
+      class="hover:text-cyan-200 duration-300"
+      href="https://jaren.me"
+      target="_blank"
+      rel="noreferrer noopener">Jaren G.</a
+    >
+  </p>
 </footer>
