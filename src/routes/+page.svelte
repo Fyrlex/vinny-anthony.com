@@ -60,8 +60,8 @@
       </h1>
       <p class="bio mt-5 text-slate-300 text-lg" in:fade={{ delay: 1000, duration: 1000 }}>
         Vinny Anthony is an independent musician known for weaving intricate soundscapes spanning indie rock,
-        alternative, and pop genres. Hailing from the serene landscapes of DC, Vinny began their musical journey at a
-        young age, initially finding solace and expression through the strings of an acoustic guitar. Their sound,
+        alternative, and pop genres. Hailing from the serene landscapes of DC, Vinny began his musical journey at a
+        young age, initially finding solace and expression through the strings of an acoustic guitar. His sound,
         characterized by heartfelt lyrics, atmospheric arrangements, and an unmistakable vocal timbre, speaks to the
         wanderlust and introspection of a soul deeply connected to natural beauty and human emotion's complexities.
       </p>
