@@ -9,37 +9,20 @@
   import Socials from '../components/Socials.svelte';
   import Contact from '../components/Contact.svelte';
 
-  const music: { title: string; appleMusic: string; spotify: string }[] = [
-    {
-      title: '"STAY AND HOLD ME"',
-      appleMusic: 'https://music.apple.com/us/album/stay-and-hold-me/1710058591?i=1710058593',
-      spotify: 'https://open.spotify.com/track/4BBU6YajIIfxk13wo0zL8I?si=753f2708bd9b47c8',
-    },
-    {
-      title: '"GENTLY"',
-      appleMusic: 'https://music.apple.com/us/album/gently/1617037640?i=1617037641',
-      spotify: 'https://open.spotify.com/track/4aq4KfNljtZOHPsYljQVcC?si=742e813091154e41',
-    },
-    {
-      title: '"JET"',
-      appleMusic: 'https://music.apple.com/us/album/jet/1726834623?i=1726834624',
-      spotify: 'https://open.spotify.com/track/2nyGkzuFoWQ5aMRiSmAelk?si=88b77560636c48e9',
-    },
-    {
-      title: '"BETTER THINGS"',
-      appleMusic: 'https://music.apple.com/us/album/better-things/1726834333?i=1726834334',
-      spotify: 'https://open.spotify.com/track/3tFCDt1molYpGxlZCsrFyw?si=478e9baede0d45aa',
-    },
-    {
-      title: '"MY SIDE"',
-      appleMusic: 'https://music.apple.com/us/album/my-side/1655581593?i=1655581594',
-      spotify: 'https://open.spotify.com/track/2mOMILCvfjTMEHNo79OPVT?si=359b118f0e954ee9',
-    },
-  ];
+  import Vinny1 from '$lib/assets/Vinny1.jpg';
+  import Vinny2 from '$lib/assets/Vinny2.jpg';
+  import Vinny3 from '$lib/assets/Vinny3.jpg';
+  import Vinny4 from '$lib/assets/Vinny4.jpg';
+  import Vinny5 from '$lib/assets/Vinny5.jpg';
+  import TheAnts from '../components/TheAnts.svelte';
 
-  const shows: { title: string; date: Date }[] = [
-    { title: 'The Camel', date: new Date('03/16/2024') },
-    { title: 'IndieHeads UVA', date: new Date('09/13/2024') },
+  const images = [Vinny1, Vinny2, Vinny3, Vinny4, Vinny5];
+
+  const events: { title: string; date: Date; type: 'show' | 'music' | 'other' }[] = [
+    { title: 'The Camel', date: new Date('03/16/2024'), type: 'show' },
+    { title: 'IndieHeads UVA', date: new Date('09/13/2024'), type: 'show' },
+    { title: 'Richmond House Show', date: new Date('09/20/2024'), type: 'show' },
+    { title: "Vinny's Bassit's Birthday", date: new Date('10/05'), type: 'other' },
   ];
 
   let load = false;
@@ -92,13 +75,16 @@
     </div>
     <div
       in:fly={{ delay: 100, duration: 1000, y: 50 }}
-      class="order-3 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5 h-fit flex flex-col space-y-5"
+      class="order-3 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5 h-fit flex flex-col space-y-5 md:space-y-10"
     >
       <div in:fly={{ delay: 600, duration: 1000, y: 50 }}>
-        <Contact />
+        <Calendar currentDate={new Date()} {events} />
       </div>
       <div in:fly={{ delay: 800, duration: 1000, y: 50 }}>
-        <Calendar currentDate={new Date()} {shows} />
+        <Contact />
+      </div>
+      <div in:fly={{ delay: 1000, duration: 1000, y: 50 }}>
+        <TheAnts />
       </div>
     </div>
   </div>

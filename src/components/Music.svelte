@@ -1,7 +1,6 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
   import { onMount } from 'svelte';
-  import { fade, fly } from 'svelte/transition';
 
   const music: { title: string; appleMusic: string; spotify: string }[] = [
     {
@@ -47,26 +46,26 @@
         <Icon
           icon="simple-icons:spotify"
           color={spotify ? '#22c55e ' : '#fdeadc'}
-          class={'text-4xl hover:bg-slate-300 rounded-full duration-300'}
+          class={'text-4xl hover:bg-slate-300 rounded-full duration-300 hover:scale-[1.05]'}
         />
       </button>
       <button on:click={() => (spotify = false)}>
         <Icon
           icon="simple-icons:applemusic"
           color={!spotify ? '#ef4444' : '#fdeadc'}
-          class="text-4xl hover:bg-slate-300 rounded-xl duration-300"
+          class="text-4xl hover:bg-slate-300 rounded-xl duration-300 hover:scale-[1.05]"
         />
       </button>
     </div>
-    <div class="text-2xl md:text-3xl text-left list-inside px-5 flex flex-col space-y-5">
+    <div class="text-2xl md:text-3xl text-left list-inside px-5 flex flex-col space-y-5 text-slate-900">
       {#each music as song}
         <a
           href={spotify ? `${song.spotify}` : `${song.appleMusic}`}
           target="_blank"
           rel="noreferrer noopener"
-          class="hover:cursor-pointer hover:text-cyan-200 duration-300"
+          class="hover:cursor-pointer hover:text-cyan-200 duration-300 hover:scale-[1.05]"
         >
-          <div class="flex flex-row items-center space-x-1 hover:scale-[1.05]">
+          <div class="flex flex-row items-center space-x-1">
             <Icon
               icon="streamline:button-play-solid"
               class="w-max duration-300"

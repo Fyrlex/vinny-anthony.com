@@ -3,13 +3,15 @@
   import Transition from '../components/transition.svelte';
   import VinnyAnthonyLogo from '$lib/assets/VinnyAnthonyLogoWide.png';
   import { goto } from '$app/navigation';
+
   import Icon from '@iconify/svelte';
 
   export let data;
+
 </script>
 
 <nav>
-  <div class="mx-auto select-none hover:cursor-pointer w-4/5 md:w-fit">
+  <div class="mx-auto flex justify-center select-none hover:cursor-pointer">
     <button on:click={() => goto('/')}>
       <img src={VinnyAnthonyLogo} alt="Vinny Anthony Logo" />
     </button>
