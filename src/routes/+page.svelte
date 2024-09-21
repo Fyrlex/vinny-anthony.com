@@ -21,7 +21,7 @@
   const events: { title: string; date: Date; type: 'show' | 'music' | 'other' }[] = [
     { title: 'The Camel', date: new Date('03/16/2024'), type: 'show' },
     { title: 'IndieHeads UVA', date: new Date('09/13/2024'), type: 'show' },
-    { title: 'Richmond House Show', date: new Date('09/20/2024'), type: 'show' },
+    { title: "Party at Connor's", date: new Date('09/21/2024'), type: 'show' },
     { title: "Vinny's Bassit's Birthday", date: new Date('10/05'), type: 'other' },
   ];
 
