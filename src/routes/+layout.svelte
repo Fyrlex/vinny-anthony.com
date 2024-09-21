@@ -7,7 +7,6 @@
   import Icon from '@iconify/svelte';
 
   export let data;
-
 </script>
 
 <nav>
@@ -29,8 +28,9 @@
     <Icon icon="fa-regular:copyright" />
     <p>2024 Vinny Anthony</p>
   </div>
-  <p class="text-sm">
-    Made by <a
+  <p class="text-sm my-1 hover:text-cyan-200 duration-300">Artwork by Jay Z.</p>
+  <p class="text-xs">
+    Web design by <a
       class="hover:text-cyan-200 duration-300"
       href="https://jaren.me"
       target="_blank"
