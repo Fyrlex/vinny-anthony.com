@@ -24,6 +24,7 @@
     { title: "Party at Connor's", date: new Date('09/21/2024'), type: 'show' },
     { title: 'Jacob Park Show', date: new Date('09/26/2024'), type: 'show' },
     { title: "Vinny's Bassit's Birthday", date: new Date('10/05'), type: 'other' },
+    { title: 'Ipanema Cafe', date: new Date('10/12/2024'), type: 'show' },
     { title: 'AEPalooza @ Virginia Tech', date: new Date('11/08/2024'), type: 'show' },
   ];
 
