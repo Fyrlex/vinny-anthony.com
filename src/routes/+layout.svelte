@@ -28,7 +28,9 @@
     <Icon icon="fa-regular:copyright" />
     <p>2024 Vinny Anthony</p>
   </div>
-  <p class="text-sm my-1 hover:text-cyan-200 duration-300">Artwork by Jay Z.</p>
+  <p class="text-sm my-1">
+    Artwork by <span class="hover:cursor-pointer hover:text-cyan-200 duration-300">Jay Z.</span>
+  </p>
   <p class="text-xs">
     Web design by <a
       class="hover:text-cyan-200 duration-300"
