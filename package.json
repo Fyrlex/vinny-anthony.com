@@ -14,9 +14,12 @@
   "devDependencies": {
     "@iconify/svelte": "^4.0.2",
     "@sveltejs/adapter-auto": "^3.2.2",
+    "@sveltejs/adapter-node": "^5.2.4",
     "@sveltejs/adapter-static": "^3.0.2",
     "@sveltejs/kit": "^2.5.18",
     "@tsconfig/svelte": "^5.0.4",
+    "@types/cors": "^2.8.17",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20.14.10",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
@@ -35,5 +38,12 @@
     "typescript": "^5.2.2",
     "vite": "^5.3.3"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@stripe/stripe-js": "^4.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "js-cookie": "^3.0.5",
+    "stripe": "^16.12.0"
+  }
 }

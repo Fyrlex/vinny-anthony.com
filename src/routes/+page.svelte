@@ -15,6 +15,7 @@
   import Vinny4 from '$lib/assets/Vinny4.jpg';
   import Vinny5 from '$lib/assets/Vinny5.jpg';
   import TheAnts from '../components/TheAnts.svelte';
+  import Merch from '../components/Merch.svelte';
 
   const images = [Vinny1, Vinny2, Vinny3, Vinny4, Vinny5];
 
@@ -47,9 +48,11 @@
       <div in:fly={{ delay: 600, duration: 1000, y: 50 }}>
         <Music />
       </div>
-
       <div in:fly={{ delay: 800, duration: 1000, y: 50 }}>
         <Media />
+      </div>
+      <div in:fly={{ delay: 1000, duration: 1000, y: 50 }}>
+        <Merch />
       </div>
     </div>
     <div
