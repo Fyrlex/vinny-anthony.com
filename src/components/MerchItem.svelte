@@ -1,38 +1,70 @@
 <script lang="ts">
+  import Cookies from 'js-cookie';
+
   export let item: {
     name: string;
+    id: string;
     description: string;
     price: number;
     image: string;
   };
 
   export let size: string;
+  export let quantity: number;
 
   function setSize(s: string) {
-    size = s;
+    Cookies.set(item.id + '-size', (size = s), { expires: 1 });
+  }
+
+  function increaseQuantity() {
+    Cookies.set(item.id + '-quantity', (++quantity).toString(), { expires: 1 });
+  }
+
+  function decreaseQuantity() {
+    Cookies.set(item.id + '-quantity', (--quantity).toString(), { expires: 1 });
   }
 </script>
 
 <div class="ring-2 ring-orange-300 p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
   <img src={item.image} alt={item.name} class="w-full h-48 object-cover rounded-t-lg" />
   <div class="mt-2">
-    <h2 class="text-xl font-semibold">{item.name}</h2>
-    <div class="my-2">
-      {#each ['s', 'm', 'l', 'xl'] as s}
+    <div class="flex flex-row justify-between">
+      <h2 class="text-xl font-semibold">{item.name}</h2>
+      <p class="items-end">Qty.</p>
+    </div>
+    <div class="flex flex-row justify-between my-2">
+      <div>
+        {#each ['S', 'M', 'L', 'XL'] as s}
+          <button
+            class="rounded-md px-2 py-2 mr-2 duration-300 hover:bg-orange-200 {size === s
+              ? 'bg-orange-300 text-white'
+              : 'bg-gray-100 text-gray-700'}"
+            on:click={() => setSize(s)}
+          >
+            {s.toUpperCase()}
+          </button>
+        {/each}
+      </div>
+      <div class="flex flex-row items-center">
         <button
-          class="rounded-md px-2 py-2 mr-2 duration-300 hover:bg-orange-200 {size === s
-            ? 'bg-orange-300 text-white'
-            : 'bg-white text-gray-700'}"
-          on:click={() => setSize(s)}
+          class="bg-gray-100 hover:bg-gray-300 duration-300 text-gray-700 font-bold w-5 h-full rounded-l select-none"
+          on:click={() => quantity > 1 && decreaseQuantity()}
         >
-          {s.toUpperCase()}
+          -
         </button>
-      {/each}
+        <span class="w-7 text-center py-2 bg-orange-300">{quantity}</span>
+        <button
+          class={'bg-gray-100 hover:bg-gray-300 duration-300 text-gray-700 font-bold w-5 h-full rounded-r select-none' +
+            (quantity === 5 ? ' cursor-not-allowed' : '')}
+          on:click={() => quantity < 5 && increaseQuantity()}
+        >
+          +
+        </button>
+      </div>
     </div>
     <p class="text-gray-400">{item.description}</p>
-    <div class="flex flex-row justify-between my-2">
-      <p class="text-lg font-bold mt-2">${item.price}</p>
-      <button class="bg-orange-300 hover:text-cyan-300 duration-300 rounded-md p-1">Buy Now</button>
+    <div class="flex flex-row justify-between mt-5">
+      <p class="text-lg font-bold">${item.price}</p>
     </div>
   </div>
 </div>
