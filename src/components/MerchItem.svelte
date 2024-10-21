@@ -1,10 +1,10 @@
 <script lang="ts">
   import Cookies from 'js-cookie';
+  import { Cart } from '../stores/cart.js';
 
   export let item: {
     name: string;
     id: string;
-    description: string;
     price: number;
     image: string;
   };
@@ -13,15 +13,31 @@
   export let quantity: number;
 
   function setSize(s: string) {
-    Cookies.set(item.id + '-size', (size = s), { expires: 1 });
+    Cookies.set('shop-' + item.id + '-size', (size = s), { expires: 1 });
   }
 
   function increaseQuantity() {
-    Cookies.set(item.id + '-quantity', (++quantity).toString(), { expires: 1 });
+    Cookies.set('shop-' + item.id + '-quantity', (++quantity).toString(), { expires: 1 });
   }
 
   function decreaseQuantity() {
-    Cookies.set(item.id + '-quantity', (--quantity).toString(), { expires: 1 });
+    Cookies.set('shop-' + item.id + '-quantity', (--quantity).toString(), { expires: 1 });
+  }
+
+  function addToCart(itemName: string, size: string, quantity: number) {
+    const cart = JSON.parse(Cookies.get('cart') || '[]');
+
+    const index = cart.findIndex((cartItem: any) => cartItem.id === itemName + '-' + size);
+
+    if (index !== -1) {
+      cart[index].quantity += quantity;
+    } else {
+      cart.push({ id: itemName + '-' + size, quantity });
+    }
+
+    Cookies.set('cart', JSON.stringify(cart));
+
+    Cart.set(cart);
   }
 </script>
 
@@ -47,24 +63,30 @@
       </div>
       <div class="flex flex-row items-center">
         <button
-          class="bg-gray-100 hover:bg-gray-300 duration-300 text-gray-700 font-bold w-5 h-full rounded-l select-none"
+          class={'bg-gray-100 duration-300 text-gray-700 font-bold w-5 h-full rounded-l select-none' +
+            (quantity === 1 ? ' cursor-not-allowed' : ' hover:bg-gray-300')}
           on:click={() => quantity > 1 && decreaseQuantity()}
         >
           -
         </button>
         <span class="w-7 text-center py-2 bg-orange-300">{quantity}</span>
         <button
-          class={'bg-gray-100 hover:bg-gray-300 duration-300 text-gray-700 font-bold w-5 h-full rounded-r select-none' +
-            (quantity === 5 ? ' cursor-not-allowed' : '')}
+          class={'bg-gray-100 duration-300 text-gray-700 font-bold w-5 h-full rounded-r select-none' +
+            (quantity === 5 ? ' cursor-not-allowed' : ' hover:bg-gray-300')}
           on:click={() => quantity < 5 && increaseQuantity()}
         >
           +
         </button>
       </div>
     </div>
-    <p class="text-gray-400">{item.description}</p>
-    <div class="flex flex-row justify-between mt-5">
+    <div class="flex flex-row justify-between items-center mt-5">
       <p class="text-lg font-bold">${item.price}</p>
+      <button
+        class="bg-orange-500 duration-300 hover:bg-orange-600 text-white font-bold py-2 px-3 rounded"
+        on:click={() => addToCart(item.id, size.toLowerCase(), quantity)}
+      >
+        Add to Cart
+      </button>
     </div>
   </div>
 </div>

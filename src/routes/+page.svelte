@@ -40,7 +40,7 @@
   <Meta data={{ title: 'Self proclaimed local legend indie sleaze artist', url: '' }} />
 </svelte:head>
 {#if load}
-  <div class="flex flex-col md:flex-row mx-5 md:mx-10 md:space-x-5 space-y-5 md:space-y-0">
+  <div class="flex flex-col md:flex-row mx-5 md:mx-20 md:space-x-5 space-y-5 md:space-y-0">
     <div
       transition:fly={{ delay: 100, duration: 1000, y: 50 }}
       class="order-2 md:order-1 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5 h-fit flex flex-col space-y-5"

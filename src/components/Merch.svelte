@@ -20,7 +20,7 @@
       src={VinnyLogo}
     />
   </div>
-  <button class="text-3xl bg-orange-300 p-2 rounded-md hover:text-cyan-300 duration-300" on:click={handleClick}
+  <button class="text-3xl text-white bg-blue-500 hover:bg-blue-600 p-2 rounded-md duration-300" on:click={handleClick}
     >Get Merch</button
   >
 </div>
