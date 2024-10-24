@@ -1,10 +1,10 @@
 import { StatusCodes } from 'http-status-codes';
 import Stripe from 'stripe';
-import { STRIPE_TEST_KEY, ORIGIN } from '$env/static/private';
+import { ORIGIN, STRIPE_LIVE_KEY } from '$env/static/private';
 import type { ICartItem } from '../../../../stores/cart.js';
 import { getProductInfo } from '../../../../lib/getProductInfo.js';
 
-const stripe = new Stripe(STRIPE_TEST_KEY, {
+const stripe = new Stripe(STRIPE_LIVE_KEY, {
   apiVersion: '2024-06-20',
 });
 
