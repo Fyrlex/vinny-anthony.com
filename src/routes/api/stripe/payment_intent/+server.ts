@@ -23,21 +23,32 @@ export async function POST({ request }) {
     };
   });
 
-  const session = await stripe.checkout.sessions.create({
-    line_items: lineItems,
-    mode: 'payment',
-    success_url: `${ORIGIN}/paymentSuccess`,
-    cancel_url: `${ORIGIN}/merch`,
-    shipping_address_collection: {
-      allowed_countries: ['US']
-    },
-    expires_at: Math.round(Date.now() / 1000) + (30 * 1000),
-  });
+  try {
+    const session = await stripe.checkout.sessions.create({
+      line_items: lineItems,
+      mode: 'payment',
+      success_url: `${ORIGIN}/paymentSuccess`,
+      cancel_url: `${ORIGIN}/merch`,
+      shipping_address_collection: {
+        allowed_countries: ['US']
+      },
+      expires_at: Math.round(Date.now() / 1000) + (30 * 1000),
+    });
 
-  return new Response(JSON.stringify({ url: session.url, sessionId: session.id }), {
-    status: StatusCodes.OK,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+    return new Response(JSON.stringify({ url: session.url, sessionId: session.id }), {
+      status: StatusCodes.OK,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.log(error);
+
+    return new Response(JSON.stringify({ error: error }), {
+      status: StatusCodes.INTERNAL_SERVER_ERROR,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }
