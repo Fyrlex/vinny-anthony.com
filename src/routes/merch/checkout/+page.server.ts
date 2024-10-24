@@ -1,6 +1,8 @@
 import { ORIGIN } from '$env/static/private';
 import { redirect } from '@sveltejs/kit';
 
+export const prerender = false;
+
 export async function load({ request }) {
   const cookies = request.headers.get('cookie');
 
@@ -20,7 +22,7 @@ export async function load({ request }) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ items: cookieMap.get('cart') }),
-  }).catch(console.error);
+  });
 
   if (res) {
     const data = await res.json();
