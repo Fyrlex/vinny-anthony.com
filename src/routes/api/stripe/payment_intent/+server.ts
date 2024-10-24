@@ -42,8 +42,6 @@ export async function POST({ request }) {
       },
     });
   } catch (error) {
-    console.log(error);
-
     return new Response(JSON.stringify({ error: error }), {
       status: StatusCodes.INTERNAL_SERVER_ERROR,
       headers: {

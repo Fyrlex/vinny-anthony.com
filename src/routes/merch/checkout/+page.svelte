@@ -1,10 +1,7 @@
 <script lang="ts">
-  import { fade, fly } from 'svelte/transition';
+  import { fly } from 'svelte/transition';
   import Meta from '../../../components/Metadata.svelte';
   import { onMount } from 'svelte';
-
-  import Ant1 from '$lib/assets/Ant1.jpg';
-  import Ant2 from '$lib/assets/Ant2.jpg';
 
   let load = false;
 
