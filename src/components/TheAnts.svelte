@@ -5,6 +5,7 @@
   import Ant3 from '$lib/assets/Ant3.jpg';
   import { fly } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import SectionHeader from './SectionHeader.svelte';
 
   const ants = [
     {
@@ -38,9 +39,7 @@
 
 {#if load}
   <div class="px-10">
-    <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800 hover:text-cyan-200 hover:cursor-pointer duration-300">
-      The Ants
-    </h2>
+    <SectionHeader title="The Ants" />
     <div class="flex flex-col text-left">
       {#each ants as ant}
         <div class="flex flex-col md:flex-row md:space-x-5 items-center justify-start mb-5">

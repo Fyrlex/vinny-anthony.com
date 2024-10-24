@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Meta from '../components/meta.svelte';
+  import Meta from '../components/Metadata.svelte';
   import VinnyScream from '$lib/assets/Vinny1.jpg';
   import { fade, fly } from 'svelte/transition';
   import { onMount } from 'svelte';
@@ -15,6 +15,7 @@
   import Vinny4 from '$lib/assets/Vinny4.jpg';
   import Vinny5 from '$lib/assets/Vinny5.jpg';
   import TheAnts from '../components/TheAnts.svelte';
+  import Merch from '../components/Merch.svelte';
 
   const images = [Vinny1, Vinny2, Vinny3, Vinny4, Vinny5];
 
@@ -36,10 +37,10 @@
 </script>
 
 <svelte:head>
-  <Meta data={{ title: 'Self proclaimed local legend indie sleaze artist', url: '' }} />
+  <Meta url="" />
 </svelte:head>
 {#if load}
-  <div class="flex flex-col md:flex-row mx-5 md:mx-10 md:space-x-5 space-y-5 md:space-y-0">
+  <div class="flex flex-col md:flex-row mx-5 md:mx-20 md:space-x-5 space-y-5 md:space-y-0">
     <div
       transition:fly={{ delay: 100, duration: 1000, y: 50 }}
       class="order-2 md:order-1 md:w-1/4 text-center bg-[#887160] rounded-md shadow-lg py-5 h-fit flex flex-col space-y-5"
@@ -47,9 +48,11 @@
       <div in:fly={{ delay: 600, duration: 1000, y: 50 }}>
         <Music />
       </div>
-
       <div in:fly={{ delay: 800, duration: 1000, y: 50 }}>
         <Media />
+      </div>
+      <div in:fly={{ delay: 1000, duration: 1000, y: 50 }}>
+        <Merch />
       </div>
     </div>
     <div
@@ -84,10 +87,10 @@
         <Calendar currentDate={new Date()} {events} />
       </div>
       <div in:fly={{ delay: 800, duration: 1000, y: 50 }}>
-        <Contact />
+        <TheAnts />
       </div>
       <div in:fly={{ delay: 1000, duration: 1000, y: 50 }}>
-        <TheAnts />
+        <Contact />
       </div>
     </div>
   </div>
