@@ -1,30 +1,34 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
-  import Meta from '../../components/meta.svelte';
+  import Meta from '../../components/Metadata.svelte';
   import { onMount } from 'svelte';
   import MerchItem from '../../components/MerchItem.svelte';
 
-  import Ant1 from '$lib/assets/Ant1.jpg';
-  import Ant2 from '$lib/assets/Ant2.jpg';
+  import HoodieFront from '$lib/assets/merch/hoodiefront.png';
+  import HoodieBack from '$lib/assets/merch/hoodieback.png';
+  import TShirtFront from '$lib/assets/merch/tshirtfront.png';
+  import TShirtBack from '$lib/assets/merch/tshirtback.png';
 
   import Cookies from 'js-cookie';
   import CartItem from '../../components/CartItem.svelte';
-  import { Cart, type ICartItem } from '../../stores/cart.js';
+  import { Cart, type ICartItem, type IMerchItem } from '../../stores/cart.js';
 
   let load = false;
 
-  let categoryItems = [
+  let categoryItems: IMerchItem[] = [
     {
       name: 'T-Shirt',
       id: 't-shirt',
-      price: 10.56,
-      image: Ant1,
+      price: 20.0,
+      imageA: HoodieFront,
+      imageB: HoodieBack,
     },
     {
       name: 'Hoodie',
       id: 'hoodie',
-      price: 20.99,
-      image: Ant2,
+      price: 35.0,
+      imageA: TShirtFront,
+      imageB: TShirtBack,
     },
   ];
 
@@ -70,36 +74,37 @@
 </script>
 
 <svelte:head>
-  <Meta data={{ title: 'Self proclaimed local legend indie sleaze artist', url: '/shop' }} />
+  <Meta url="/shop" />
 </svelte:head>
 
 {#if load}
   <div class="flex flex-col md:flex-row mx-5 md:mx-20 md:space-x-5 space-y-5 md:space-y-0">
-    <div class="md:w-1/4 invisible" />
-    <div class="md:w-1/2 mx-auto container text-center items-center justify-start flex flex-col">
+    <div class="md:w-1/5 invisible"></div>
+    <div class="md:w-3/5 mx-auto container text-center items-center justify-start flex flex-col space-y-10">
       <h1
         transition:fly={{ delay: 300, duration: 1000, y: 50 }}
         class="text-5xl text-orange-300 hover:cursor-pointer duration-300 hover:text-orange-400"
       >
         Merch
       </h1>
-      <div class="flex justify-center my-10">
+      <div class="flex justify-center">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
           {#each categoryItems as item}
             <MerchItem {item} size={getShopSize(item.id)} quantity={getShopQuantity(item.id)} />
           {/each}
         </div>
       </div>
-
-      <a class="bg-blue-500 hover:bg-blue-600 duration-300 text-white font-bold py-2 px-4 rounded" href="/">
+      <a class="text-2xl bg-blue-500 hover:bg-blue-600 duration-300 text-white font-bold py-2 px-4 rounded" href="/">
         Home Page
       </a>
     </div>
-
     {#if cart.length === 0}
-      <div class="md:w-1/5 invisible" />
+      <div class="md:w-1/5 invisible"></div>
     {:else}
-      <div class="md:w-1/5 text-center bg-[#887160] rounded-md shadow-lg py-5 h-fit flex flex-col">
+      <div
+        in:fly={{ y: 100, duration: 500 }}
+        class="md:w-1/5 text-center bg-[#887160] rounded-md shadow-lg py-5 h-fit flex flex-col"
+      >
         <h3 class="text-4xl md:text-5xl text-emerald-800 hover:text-cyan-200 hover:cursor-pointer duration-300">
           Cart
         </h3>
@@ -110,7 +115,7 @@
             {/each}
             <div class="flex justify-center">
               <button
-                class="bg-orange-300 hover:bg-orange-400 duration-300 text-white font-bold py-2 px-4 rounded"
+                class="text-2xl bg-orange-300 hover:bg-orange-400 duration-300 text-white font-bold py-2 px-4 rounded"
                 on:click={() => {
                   window.location.href = '/merch/checkout';
                 }}

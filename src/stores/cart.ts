@@ -7,3 +7,11 @@ export interface ICartItem {
   id: string;
   quantity: number;
 }
+
+export interface IMerchItem {
+  name: string;
+  id: string;
+  price: number;
+  imageA: string;
+  imageB: string;
+}

@@ -12,6 +12,10 @@ export async function load({ request }) {
     cookieMap.set(key, value);
   });
 
+  if (JSON.parse(cookieMap.get('cart')).length === 0) {
+    return redirect(303, '/merch');
+  }
+
   const res = await fetch(ORIGIN + '/api/stripe/payment_intent', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

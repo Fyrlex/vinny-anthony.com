@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Meta from '../components/meta.svelte';
+  import Meta from '../components/Metadata.svelte';
   import VinnyScream from '$lib/assets/Vinny1.jpg';
   import { fade, fly } from 'svelte/transition';
   import { onMount } from 'svelte';
@@ -37,7 +37,7 @@
 </script>
 
 <svelte:head>
-  <Meta data={{ title: 'Self proclaimed local legend indie sleaze artist', url: '' }} />
+  <Meta url="" />
 </svelte:head>
 {#if load}
   <div class="flex flex-col md:flex-row mx-5 md:mx-20 md:space-x-5 space-y-5 md:space-y-0">
@@ -87,10 +87,10 @@
         <Calendar currentDate={new Date()} {events} />
       </div>
       <div in:fly={{ delay: 800, duration: 1000, y: 50 }}>
-        <Contact />
+        <TheAnts />
       </div>
       <div in:fly={{ delay: 1000, duration: 1000, y: 50 }}>
-        <TheAnts />
+        <Contact />
       </div>
     </div>
   </div>

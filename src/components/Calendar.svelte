@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { fly } from 'svelte/transition';
+  import SectionHeader from './SectionHeader.svelte';
 
   export let currentDate!: Date;
   export let events!: { title: string; date: Date; type: 'show' | 'music' | 'other' }[];
@@ -81,16 +82,13 @@
 </script>
 
 <div>
-  <h2 class="text-4xl md:text-5xl mb-5 text-emerald-800 hover:text-cyan-200 hover:cursor-pointer duration-300">
-    Calendar
-  </h2>
-
-  <h3 class="text-2xl font-bold text-center" in:fly={{ delay: 600, duration: 1000, y: 50 }}>
+  <SectionHeader title="Calendar" />
+  <h3 class="text-2xl font-bold text-center" in:fly={{ delay: 400, duration: 1000, y: 50 }}>
     {currentDate.toLocaleString('default', { month: 'long' })}
     {currentDate.getFullYear()}
   </h3>
 
-  <div class="flex justify-center space-x-4 mt-2" in:fly={{ delay: 800, duration: 1000, y: 50 }}>
+  <div class="flex justify-center space-x-4 mt-2" in:fly={{ delay: 600, duration: 1000, y: 50 }}>
     <div class="flex items-center space-x-2">
       <div class="w-4 h-4 bg-emerald-300 rounded"></div>
       <span>Show</span>

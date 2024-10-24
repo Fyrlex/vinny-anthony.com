@@ -1,6 +1,7 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
   import { onMount } from 'svelte';
+  import SectionHeader from './SectionHeader.svelte';
 
   const music: { title: string; appleMusic: string; spotify: string }[] = [
     {
@@ -40,7 +41,7 @@
 
 {#if load}
   <div>
-    <h2 class="text-4xl md:text-5xl text-emerald-800 hover:text-cyan-200 hover:cursor-pointer duration-300">Music</h2>
+    <SectionHeader title="Music" />
     <div class="flex flex-row items-center justify-center space-x-5 my-3">
       <button on:click={() => (spotify = true)}>
         <Icon

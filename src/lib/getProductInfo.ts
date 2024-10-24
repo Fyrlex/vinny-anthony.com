@@ -23,8 +23,8 @@ const prodProductPrices = {
 };
 
 
-import Ant2 from '$lib/assets/Ant2.jpg';
-import Ant3 from '$lib/assets/Ant3.jpg';
+import Hoodie from '$lib/assets/merch/tshirtfront.png';
+import TShirt from '$lib/assets/merch/hoodiefront.png';
 
 const productPrices = MODE === 'development' ? devProductPrices : prodProductPrices;
 
@@ -38,65 +38,65 @@ export const getProductInfo = (itemSizeId: string): {
   switch (itemSizeId) {
     case 'hoodie-s':
       return {
-        checkoutName: 'Hoodie - Small',
+        checkoutName: 'Hoodie',
         priceId: productPrices[itemSizeId],
-        image: Ant2,
+        image: Hoodie,
         size: 's'
       };
 
     case 'hoodie-m':
       return {
-        checkoutName: 'Hoodie - Medium',
+        checkoutName: 'Hoodie',
         priceId: productPrices[itemSizeId],
-        image: Ant2,
+        image: Hoodie,
         size: 'm'
       };
 
     case 'hoodie-l':
       return {
-        checkoutName: 'Hoodie - Large',
+        checkoutName: 'Hoodie',
         priceId: productPrices[itemSizeId],
-        image: Ant2,
+        image: Hoodie,
         size: 'l'
       };
 
     case 'hoodie-xl':
       return {
-        checkoutName: 'Hoodie - XL',
+        checkoutName: 'Hoodie',
         priceId: productPrices[itemSizeId],
-        image: Ant2,
+        image: Hoodie,
         size: 'xl'
       };
 
     case 't-shirt-s':
       return {
-        checkoutName: 'T-Shirt - Small',
+        checkoutName: 'T-Shirt',
         priceId: productPrices[itemSizeId],
-        image: Ant3,
+        image: TShirt,
         size: 's'
       };
 
     case 't-shirt-m':
       return {
-        checkoutName: 'T-Shirt - MD',
+        checkoutName: 'T-Shirt',
         priceId: productPrices[itemSizeId],
-        image: Ant3,
+        image: TShirt,
         size: 'm'
       };
 
     case 't-shirt-l':
       return {
-        checkoutName: 'T-Shirt - Large',
+        checkoutName: 'T-Shirt',
         priceId: productPrices[itemSizeId],
-        image: Ant3,
+        image: TShirt,
         size: 'l'
       };
 
     case 't-shirt-xl':
       return {
-        checkoutName: 'T-Shirt - XL',
+        checkoutName: 'T-Shirt',
         priceId: productPrices[itemSizeId],
-        image: Ant3,
+        image: TShirt,
         size: 'xl'
       };
 

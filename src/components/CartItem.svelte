@@ -2,10 +2,11 @@
   import Cookies from 'js-cookie';
   import { Cart, type ICartItem } from '../stores/cart.js';
   import { getProductInfo } from '../lib/getProductInfo.js';
+  import Icon from '@iconify/svelte';
 
   export let item: ICartItem;
 
-  const { checkoutName: name, image, size } = getProductInfo(item.id);
+  const { checkoutName, image, size } = getProductInfo(item.id);
 
   function removeFromCart() {
     const cart = JSON.parse(Cookies.get('cart') || '[]') as ICartItem[];
@@ -23,14 +24,16 @@
 </script>
 
 <div class="ring-2 ring-orange-300 p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 m-5">
-  <img src={image} alt={name} class="w-full h-40 object-cover rounded-t-lg" />
-  <div class="mt-2">
+  <img src={image} alt={checkoutName} class="w-full h-40 object-cover rounded-t-lg object-top" />
+  <div class="flex flex-col space-y-4 mt-2">
     <div class="flex flex-row justify-between">
-      <h2 class="text-lg md:text-xl font-semibold">{name}</h2>
-      <button class="text-red-500 hover:text-red-300 duration-300 rounded" on:click={removeFromCart}>Remove</button>
+      <p class="text-3xl">{checkoutName}</p>
+      <p class="text-xl">Size: {size}</p>
     </div>
-    <div class="flex flex-row justify-between md:mt-2">
-      <p>Size: {size}</p>
+    <div class="flex flex-row justify-between text-lg">
+      <button class="text-white bg-red-400 hover:bg-red-500 duration-300 rounded py-1 px-2" on:click={removeFromCart}
+        ><Icon icon="fa-regular:trash-alt" /></button
+      >
       <p>Qty: {item.quantity}</p>
     </div>
   </div>
