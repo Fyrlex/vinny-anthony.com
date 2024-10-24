@@ -11,7 +11,7 @@
   function removeFromCart() {
     const cart = JSON.parse(Cookies.get('cart') || '[]') as ICartItem[];
 
-    const index = cart.findIndex((cartItem: any) => cartItem.id === item.id);
+    const index = cart.findIndex(cartItem => cartItem.id === item.id);
 
     if (index !== -1) {
       cart.splice(index, 1);
@@ -19,7 +19,7 @@
 
     Cookies.set('cart', JSON.stringify(cart));
 
-    Cart.update(cart => cart.filter(cartItem => cartItem.id !== item.id));
+    Cart.set(cart);
   }
 </script>
 
@@ -31,9 +31,9 @@
       <p class="text-xl">Size: {size}</p>
     </div>
     <div class="flex flex-row justify-between text-lg">
-      <button class="text-white bg-red-400 hover:bg-red-500 duration-300 rounded py-1 px-2" on:click={removeFromCart}
-        ><Icon icon="fa-regular:trash-alt" /></button
-      >
+      <button class="text-white bg-red-400 hover:bg-red-500 duration-300 rounded py-1 px-2" on:click={removeFromCart}>
+        <Icon icon="fa-regular:trash-alt" />
+      </button>
       <p>Qty: {item.quantity}</p>
     </div>
   </div>

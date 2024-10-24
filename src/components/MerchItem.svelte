@@ -1,6 +1,6 @@
 <script lang="ts">
   import Cookies from 'js-cookie';
-  import { Cart, type IMerchItem } from '../stores/cart.js';
+  import { Cart, type ICartItem, type IMerchItem } from '../stores/cart.js';
   import { fade, fly } from 'svelte/transition';
 
   export let item: IMerchItem;
@@ -23,9 +23,9 @@
   }
 
   function addToCart(itemName: string, size: string, quantity: number) {
-    const cart = JSON.parse(Cookies.get('cart') || '[]');
+    const cart = JSON.parse(Cookies.get('cart') || '[]') as ICartItem[];
 
-    const index = cart.findIndex((cartItem: any) => cartItem.id === itemName + '-' + size);
+    const index = cart.findIndex(cartItem => cartItem.id === itemName + '-' + size);
 
     if (index !== -1) {
       cart[index].quantity += quantity;
