@@ -110,7 +110,7 @@
         </h3>
         <div>
           <div>
-            {#each cart as item}
+            {#each cart as item (item.id)}
               <CartItem {item} />
             {/each}
             <div class="flex justify-center">
