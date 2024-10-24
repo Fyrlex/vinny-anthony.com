@@ -9,7 +9,6 @@ const stripe = new Stripe(STRIPE_TEST_KEY, {
 });
 
 export async function POST({ request }) {
-
   const body = await request.json();
 
   const items = JSON.parse(body.items) as ICartItem[];
@@ -42,6 +41,8 @@ export async function POST({ request }) {
       },
     });
   } catch (error) {
+    console.error(error);
+
     return new Response(JSON.stringify({ error: error }), {
       status: StatusCodes.INTERNAL_SERVER_ERROR,
       headers: {
