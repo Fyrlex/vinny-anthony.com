@@ -32,6 +32,9 @@ export async function POST({ request }) {
         allowed_countries: ['US']
       },
       expires_at: Math.round(Date.now() / 1000) + (30 * 1000),
+      invoice_creation: {
+        enabled: true,
+      }
     });
 
     return new Response(JSON.stringify({ url: session.url, sessionId: session.id }), {
