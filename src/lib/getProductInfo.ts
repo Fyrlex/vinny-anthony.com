@@ -9,8 +9,8 @@ const productPrices = {
   't-shirt-xl': 'price_1QCCPQH5WejaCk0DUN7JKMAA',
 };
 
-import Hoodie from '$lib/assets/merch/tshirtfront.png';
-import TShirt from '$lib/assets/merch/hoodiefront.png';
+import Hoodie from '$lib/assets/merch/hoodiefront.png';
+import TShirt from '$lib/assets/merch/tshirtfront.png';
 
 export const getProductInfo = (itemSizeId: string): {
   checkoutName: string;

@@ -17,16 +17,16 @@
 
   let categoryItems: IMerchItem[] = [
     {
-      name: 'T-Shirt',
-      id: 't-shirt',
-      price: 20.0,
+      name: 'Hoodie',
+      id: 'hoodie',
+      price: 35.0,
       imageA: HoodieFront,
       imageB: HoodieBack,
     },
     {
-      name: 'Hoodie',
-      id: 'hoodie',
-      price: 35.0,
+      name: 'T-Shirt',
+      id: 't-shirt',
+      price: 20.0,
       imageA: TShirtFront,
       imageB: TShirtBack,
     },
